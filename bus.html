@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="login.png" type="image/png">
+  <title>Turismo Aysha — Inicio</title>
+
+  <style>
+    /* ==========================
+       VARIABLES DE COLOR Y BASE
+    ===========================*/
+    :root {
+      --primary: #ff6a00;
+      --accent: #0b64b6;
+      --muted: #f4f6f8;
+      --card: #ffffff;
+      --text: #222;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #fff 0%, #fbfbfd 100%);
+    }
+
+    .container {
+      width: min(1200px, 94%);
+      margin: 0 auto;
+    }
+
+    /* ==========================
+       HEADER Y NAVEGACIÓN
+    ===========================*/
+    header {
+      background: #fff;
+      padding: 28px 24px;
+      border-bottom: 4px solid #ffd366;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo img {
+      width: 70px;
+      height: auto;
+      display: block;
+      background: none;
+    }
+
+    nav {
+      margin-left: auto;
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ==========================
+       BARRA DE BÚSQUEDA
+    ===========================*/
+    .search-wrap {
+      background: var(--muted);
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 18px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .field {
+      background: var(--card);
+      padding: 14px;
+      border-radius: 10px;
+      min-width: 180px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 6px 18px rgba(9, 30, 66, 0.06);
+    }
+
+    .field select,
+    .field input {
+      border: none;
+      background: transparent;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .btn-search {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ==========================
+       SECCIÓN HERO
+    ===========================*/
+    .hero {
+      position: relative;
+      padding: 48px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 24px 48px rgba(9, 30, 66, 0.08);
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .hero p {
+      margin-bottom: 18px;
+      color: #415165;
+    }
+
+    .kpis {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .kpi {
+      background: #fff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 300px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #cde7ff, #f6f9ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    /* ==========================
+       FEATURES (CARACTERÍSTICAS)
+    ===========================*/
+    .features {
+      display: flex;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .feature {
+      flex: 1;
+      background: var(--card);
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(9, 30, 66, 0.04);
+    }
+
+    .feature h4 {
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .feature p {
+      color: #475569;
+    }
+
+    /* ======== DESTINOS DESTACADOS ======== */
+    #destinos {
+      margin-top: 40px;
+    }
+
+    .destinos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .destinos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .destinos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .destinos-grid article {
+      background: var(--card);
+      padding: 14px;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(9, 30, 66, 0.04);
+      text-align: center;
+    }
+
+    .destinos-grid article img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* ==========================
+       FOOTER
+    ===========================*/
+    footer {
+      margin-top: 40px;
+      padding: 28px 0;
+      border-top: 1px solid #eef2f6;
+    }
+
+    .foot-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: #64748b;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container" style="display:flex;align-items:center">
+      <div class="brand">
+        <div class="logo">
+          <img src="login.png" alt="Logo Turismo Aysha">
+        </div>
+        <div style="line-height:1">
+          <div style="font-weight:800;color:var(--accent);font-size:23px">Turismo Aysha</div>
+          <div style="font-size:13px;color:#64748b">Conectando Perú con calidez</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#empresa">Nuestra empresa</a>
+        <a href="#destinos">Destinos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#oficinas">Oficinas</a>
+        <a href="#contacto">Contáctenos</a>
+      </nav>
+    </div>
+
+    <div class="container" style="margin-top:12px">
+      <div class="search-wrap">
+        <div class="field">
+          <label style="font-size:13px;color:#94a3b8">Ciudad de origen</label>
+          <select aria-label="origen">
+            <option>Elige origen</option>
+            <option>Lima</option>
+            <option>Huánuco</option>
+            <option>Tingo María</option>
+            <option>Pucallpa</option>
+            <option>Tarapoto</option>
+          </select>
+        </div>
+        <div class="field">
+          <label style="font-size:13px;color:#94a3b8">Ciudad de destino</label>
+          <select aria-label="destino">
+            <option>Elige destino</option>
+            <option>Huánuco</option>
+            <option>Pucallpa</option>
+            <option>Tocache</option>
+            <option>Tarapoto</option>
+          </select>
+        </div>
+        <div class="field" style="min-width:220px">
+          <label style="font-size:13px;color:#94a3b8">Fecha de viaje</label>
+          <input type="date" value="2025-11-01" aria-label="fecha" />
+        </div>
+        <button class="btn-search">Buscar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <h1>Viaja seguro y cómodo — Descubre nuestra Costa, Selva y Sierra</h1>
+          <p>Turismo Aysha ofrece rutas regulares y paquetes turísticos entre Lima, Cusco, Arequipa, Ancash, Tarapoto y Tocache. Atención familiar, flota moderna y programas responsables con las comunidades.</p>
+
+          <div class="kpis">
+            <div class="kpi"><strong>+10 años</strong><span>de experiencia</span></div>
+            <div class="kpi"><strong>98%</strong><span>puntuación en seguridad</span></div>
+            <div class="kpi"><strong>Rutas</strong><span>costa, sierra y selva</span></div>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:10px">
+            <a href="#servicios" style="padding:10px 14px;border-radius:10px;background:#eef2ff;border:0;color:var(--accent);text-decoration:none;font-weight:700">Ver servicios</a>
+            <a href="#contacto" style="padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--primary),#ff8f3a);color:#fff;text-decoration:none;font-weight:700">Reserva ahora</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="badge">10 años</div>
+          <img src="https://freewalkingtoursperu.com/wp-content/uploads/2024/08/top-20-lugares-turisticos-del-peru.webp" alt="Turismo Aysha">
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h4>Confort</h4>
+          <p>Asientos reclinables, climatización y entretenimiento a bordo para viajes largos.</p>
+        </div>
+        <div class="feature">
+          <h4>Seguridad</h4>
+          <p>Mantenimiento preventivo, monitoreo en ruta y personal capacitado en primeros auxilios.</p>
+        </div>
+        <div class="feature">
+          <h4>Sostenibilidad</h4>
+          <p>Rutas optimizadas y programas con comunidades para reducir impacto ambiental.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="destinos">
+      <h3 style="color:var(--accent)">Destinos destacados</h3>
+      <div class="destinos-grid">
+        <article>
+          <h4>Cusco</h4>
+          <p>Santuario Histórico de Machu Picchu.</p>
+          <img src="https://freewalkingtoursperu.com/wp-content/uploads/2024/02/top-20-lugares-turisticos-del-peru_7-1.webp" alt="Cusco">
+        </article>
+        <article>
+          <h4>Arequipa</h4>
+          <p>Monasterio de Santa Catalina.</p>
+          <img src="https://freewalkingtoursperu.com/wp-content/uploads/2024/02/top-20-lugares-turisticos-del-peru_10.webp" alt="Arequipa">
+        </article>
+        <article>
+          <h4>Áncash</h4>
+          <p>Parque Nacional Huascarán.</p>
+          <img src="https://freewalkingtoursperu.com/wp-content/uploads/2024/02/top-20-lugares-turisticos-del-peru_16.webp" alt="Ancash">
+        </article>
+        <article>
+          <h4>Lima</h4>
+          <p>Centro Histórico de Lima.</p>
+          <img src="https://freewalkingtoursperu.com/wp-content/uploads/2024/02/top-20-lugares-turisticos-del-peru_9-1.webp" alt="Lima">
+        </article>
+        <article>
+          <h4>Tarapoto</h4>
+          <p>Catarata de Gocta.</p>
+          <img src="https://freewalkingtoursperu.com/wp-content/uploads/2024/02/top-20-lugares-turisticos-del-peru_11.webp" alt="Tarapoto">
+        </article>
+        <article>
+          <h4>Lambayeque</h4>
+          <p>Museo Tumbas Reales de Sipán.</p>
+          <img src="https://freewalkingtoursperu.com/wp-content/uploads/2024/02/top-20-lugares-turisticos-del-peru_14.webp" alt="Lambayeque">
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot-grid container">
+        <div>
+          <strong>Turismo Aysha S.A.C.</strong>
+          <div style="margin-top:8px;color:#64748b">
+            Av. Los Manglares 123, San Juan De Lurigancho - Lima • Tel: (01) 0800-00200
+          </div>
+        </div>
+        <div style="text-align:right;color:#64748b">
+          © 2025 Turismo Aysha — informes@gminternacional.pe
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
